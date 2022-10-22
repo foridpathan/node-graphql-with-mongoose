@@ -1,0 +1,15 @@
+overwrite: true
+schema:
+  - ./src/graphql/models/**/type.graphql
+  - ./src/graphql/models/**/extends.graphql
+  - ./src/graphql/schema/**/*.graphql
+generates:
+  ./src/generated/schema.graphql:
+    plugins:
+      - "schema-ast"
+    config:
+      includeDirectives: true
+      commentDescriptions: true
+hooks:
+  afterAllFileWrite:
+    - prettier --write
